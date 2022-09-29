@@ -1,0 +1,342 @@
+:root{
+  --chroma-one: hsl(147, 89%, 46%);
+  --chroma-two: hsl(3, 88%, 53%);
+  --chroma-three: hsl(191, 88%, 47%);
+  --bg-sample-one:hsl(0, 0%, 0%);
+  --bg-sample-two:hsl(220, 26%, 9%);
+  --bg-sample-three: hsl(0, 0%, 0%);
+  --glass: hsla(0, 0%, 100%, 0.03);
+  --border: hsl(0, 0%, 17%);
+  --common-text: hsl(0, 0%, 50%);
+  --button-text-color: hsl(0, 0%, 95%);
+  --input: hsl(0, 0%, 17%, 0.4);
+}
+*{
+  margin: 0;
+  border: 0;
+  box-sizing: border-box;
+}
+body{
+  background: linear-gradient(45deg,var(--bg-sample-one),var(--bg-sample-two), var(--bg-sample-three));
+  background-size: 300% 300%;
+  animation: bg-animate 8s ease infinite;
+}
+.container{
+  margin-inline: 20px
+}
+.title{
+  padding: 1rem 1rem 0 1rem;
+  margin-inline: auto;
+  text-align: center;
+  text-transform: uppercase;
+  text-shadow: 1px 1px 10px black;
+  font: 400 1.8rem 'kanit', sans-serif;
+  color: var(--chroma-three);
+}
+.credits, .credits a{
+  text-decoration: none;
+  text-align: center;
+  font: 200 0.8rem 'kanit', sans-serif;
+  color: var(--common-text);
+  padding-bottom: 0.5rem;
+}
+.balance{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas: 
+  'total total'
+  'revenue expenses';
+  margin-bottom: 4px;
+  border-radius: 20px;
+  background-color: var(--glass);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+}
+.total{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  grid-area: total;
+  text-align: center;
+  border-bottom: 1px solid var(--border);
+}
+.total-title{
+  width: 5rem;
+  margin-left: 3rem;
+  font: 200 1.1rem 'kanit', sans-serif;
+  color: var(--common-text);
+}
+.total-value{
+  width: 100%;
+  font: 400 1.3rem 'kanit', sans-serif;
+  color: var(--chroma-three);
+}
+.revenue{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  grid-area: revenue;
+  border-right: 0.5px solid var(--border);
+}
+.revenue-title{
+  font: 200 1.1rem 'kanit', sans-serif;
+  color: var(--common-text);
+}
+.revenue-value{
+  font: 400 1.3rem 'kanit', sans-serif;
+  color: var(--chroma-one)
+}
+.expenses{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  grid-area: expenses;
+  border-left: 0.5px solid var(--common-text);
+}
+.expenses-title{
+  font: 200 1.1rem 'kanit', sans-serif;
+  color: var(--common-text);
+}
+.expenses-value{
+  font: 400 1.3rem 'kanit', sans-serif;
+  color: var(--chroma-two)
+}
+.add-menu{
+  margin-bottom: 4px;
+  border-radius: 20px;
+  padding: 1rem;
+  border: 1px solid var(--border);
+  background-color: var(--glass);
+  font: 200 1rem 'kanit', sans-serif;
+  color: var(--common-text);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+}
+.add-menu-legend{
+  padding-bottom: 0.3rem;
+  text-align: center;
+  font: 500 1.2rem 'kanit', sans-serif;
+  color: var(--chroma-three);
+}
+form{
+  width: 90%;
+  margin-inline: auto;
+  padding-inline: 0.5rem;
+}
+.name input{
+  width: 80%;
+  height: 1.5rem;
+  border-radius: 20px;
+  color: var(--common-text);
+  background-color: var(--input);
+  outline: none;
+}
+.type{
+  padding-top: 0.5rem;
+  display: flex;
+  align-items: center;
+}
+.money{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.money input{
+  display: none;
+}
+.money label{
+  padding: 0.1rem 0.5rem;
+  cursor: pointer;
+}
+.money input:checked + [for='gain']{
+  background-color: var(--input);
+  border-radius: 20px;
+  color: var(--chroma-one);
+  font-weight: 500;
+}
+.money input:checked + [for='moneyOut']{
+  background-color: var(--input);
+  border-radius: 20px;
+  color: var(--chroma-two);
+  font-weight: 500;
+}
+.category{
+  padding-top: 0.5rem
+}
+.category select, option{
+  outline: none;
+  width: 10rem;
+  height: 1.5rem;
+  text-align: center;
+  background-color: var(--input);
+  border-radius: 20px;
+  color: var(--common-text);
+}
+.amount{
+  padding-top: 0.5rem;
+}
+.amount input{
+  width: 65%;
+  padding-inline: 1rem;
+  text-align: center;
+  height: 1.5rem;
+  border-radius: 20px;
+  font-weight: 700;
+  background-color: var(--input);
+  color: var(--chroma-three);
+  outline: none;
+}
+.date{
+  padding: 0.5rem 0 1rem;
+}
+.date input{
+  background-color: var(--input);
+  color: var(--common-text);
+  height: 1.5rem;
+  text-align: center;
+  border-radius: 5px;
+  outline: none;
+}
+button[type="submit"]{
+  text-transform: uppercase;
+  width: 10rem;
+  padding: 0.5rem;
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  margin-inline: auto;
+  border-radius: 20px;
+  color: var(--button-text-color);
+  background-color: var(--chroma-three);
+  transition: all 300ms;
+}
+button[type="submit"]:hover{
+  transform: scale(1.1);
+  transition: all 300ms;
+}
+.name label, .category label, .amount label, .date label{
+  padding-right: 0.5rem;
+}
+.register{
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  background-color: var(--glass);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+}
+.register-div{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 2rem;
+  padding: 0.5rem;
+  border-radius:20px;
+  border: 1px solid var(--border);
+  font: 400 1rem 'kanit', sans-serif;
+  color: var(--common-text)
+}
+.name-register{
+  color: var(--chroma-three);
+}
+.amount-register{
+  color: var(--chroma-two)
+}
+.positive{
+  color:var(--chroma-one);
+}
+.date-register{
+  font-size: 0.9rem;
+}
+.delete-button{
+  font-size: 1.2rem;
+  transition: all 300ms;
+}
+.delete-button:hover{
+  font-size: 1.5rem;
+  color: var(--chroma-two);
+  transition: all 300ms;
+}
+.without-register{
+  display: block;
+  margin-inline: auto;
+  font: 400 1.2rem 'kanit', sans-serif;
+  color: var(--border)
+}
+/*loading page*/
+.title-loading{
+  padding-top:13rem;
+  margin-inline: auto;
+  text-align: center;
+  text-transform: uppercase;
+  text-shadow: 1px 1px 10px black;
+  font: 400 2rem 'kanit', sans-serif;
+  color: var(--chroma-three);
+}
+.loading-div{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+.loading-div p{
+  text-transform: uppercase;
+  font: 400 1.8rem 'kanit', sans-serif;
+  color: var(--common-text);
+  animation: loading-text-animation 5.6s infinite;
+}
+.loading-animation{
+  height: 7rem;
+  display: flex;
+  align-items: flex-end;
+  gap: 0.3rem;
+}
+.stick1{
+  width: 1rem;
+  height: 1rem;
+  background-color: var(--chroma-one);
+  animation: loading 4s 1s infinite;
+}
+.stick2{
+  width: 1rem;
+  height: 1rem;
+  background-color: var(--chroma-two);
+  animation: loading 4s 1.3s infinite;
+}
+.stick3{
+  width: 1rem;
+  height: 1rem;
+  background-color: var(--chroma-three);
+  animation: loading 4s 1.6s infinite;
+}
+/*animations*/
+@keyframes bg-animate {
+  0%{background-position: 0% 50%;}
+  20%{background-position: 100% 50%;}
+  100%{background-position: 0% 50%;}
+}
+@keyframes loading{
+  0%{height: 1rem}
+  25%{height: 3rem}
+  80%{height: 1rem;}
+  100%{height: 1rem;}
+}
+@keyframes loading-text-animation{
+  0%{color: var(--common-text);}
+  25%{color: var(--chroma-one)}
+  50%{color: var(--chroma-two)}
+  75%{color: var(--chroma-three)}
+  100%{color: var(--common-text);}
+  
+}
