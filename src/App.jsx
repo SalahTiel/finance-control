@@ -13,10 +13,11 @@ export const App = () =>{
   const [category, setCategory] = useState()
   const [amount, setAmount] = useState()
   const [date, setDate] = useState('')
+  const API = "https://my-json-server.typicode.com/SalahTiel/control-finance-backend/registers"
   useEffect(()=>{
     setLoading(true)
     const loadData = async() =>{
-      const resp = await fetch("http://localhost:5000/registers")
+      const resp = await fetch(API)
       .then((res) => res.json())
       .then((data) => data)
       setLoading(false)
@@ -52,7 +53,7 @@ export const App = () =>{
       amount,
       date
     }
-    await fetch('http://localhost:5000/registers', {
+    await fetch(API, {
       method: "POST",
       body: JSON.stringify(newRegister),
       headers: {
@@ -66,7 +67,7 @@ export const App = () =>{
   }
   const registerDelete = async (id) => {
     setRefresh(true)
-    await fetch('http://localhost:5000/registers/' + id, {
+    await fetch(API + id, {
       method: "DELETE",
     })
     setRegister((prevState) => prevState.filter((register) => register.id !== id))
