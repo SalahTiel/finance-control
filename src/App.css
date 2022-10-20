@@ -107,6 +107,39 @@ body{
   font: 400 1.3rem 'kanit', sans-serif;
   color: var(--chroma-two)
 }
+.new-register{
+  display: block;
+  height: 2rem;
+  width: 100%;
+  margin-inline: auto;
+  margin-bottom: 4px;
+  border-radius: 20px;
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--button-text-color);
+  font: 700 1rem 'kanit', sans-serif;
+  background-color: var(--chroma-three);
+  border: 1px solid var(--border);
+  transition: all 300ms;
+}
+.new-register:hover{
+  transform: scale(1.03);
+  transition: all 300ms;
+}
+.close-button{
+  width: auto;
+  display: block;
+  padding-right: 1rem;
+  margin-left: auto;
+  color: var(--chroma-two);
+  font-size: 1.7rem;
+  transition: all 300ms;
+}
+.close-button:hover{
+  color: var(--chroma-three);
+  transform: scale(1.2);
+  transition: all 300ms;
+}
 .add-menu{
   margin-bottom: 4px;
   border-radius: 20px;
@@ -117,6 +150,8 @@ body{
   color: var(--common-text);
   backdrop-filter: blur(16px) saturate(180%);
   -webkit-backdrop-filter: blur(16px) saturate(180%);
+  animation: slide-bottom 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  z-index: -1;
 }
 .add-menu-legend{
   padding-bottom: 0.3rem;
@@ -273,7 +308,7 @@ button[type="submit"]:hover{
   font: 400 1.2rem 'kanit', sans-serif;
   color: var(--border)
 }
-/*loading page*/
+/*loading page --------------------------------*/
 .title-loading{
   padding-top:13rem;
   margin-inline: auto;
@@ -306,19 +341,23 @@ button[type="submit"]:hover{
   width: 1rem;
   height: 1rem;
   background-color: var(--chroma-one);
-  animation: loading 4s 1s infinite;
+  animation: loading 2s 1s infinite;
 }
 .stick2{
   width: 1rem;
   height: 1rem;
   background-color: var(--chroma-two);
-  animation: loading 4s 1.3s infinite;
+  animation: loading 2s 1.3s infinite;
 }
 .stick3{
   width: 1rem;
   height: 1rem;
   background-color: var(--chroma-three);
-  animation: loading 4s 1.6s infinite;
+  animation: loading 2s 1.6s infinite;
+}
+.balance, .add-menu, .register, .new-register{
+  max-width: 43.75rem;
+  margin-inline: auto;
 }
 /*animations*/
 @keyframes bg-animate {
@@ -338,5 +377,15 @@ button[type="submit"]:hover{
   50%{color: var(--chroma-two)}
   75%{color: var(--chroma-three)}
   100%{color: var(--common-text);}
-  
+}
+@keyframes slide-bottom{
+  0%{transform: translateY(-100px) ;}
+  100%{transform: translateY(0)}
+}
+/*logic*/
+.invisible{
+  display: none;
+  opacity: 0;
+  visibility: hidden;
+
 }

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import {BiTrashAlt} from 'react-icons/bi'
+import {BiTrashAlt, BiArrowToTop} from 'react-icons/bi'
 import './App.css'
 export const App = () =>{
   const [total, setTotal] = useState(0)
@@ -8,6 +8,7 @@ export const App = () =>{
   const [register, setRegister] = useState([])
   const [loading, setLoading] = useState(true)
   const [refresh, setRefresh] = useState(true)
+  const [close, setClose] = useState(true)
   const [name, setName] = useState('')
   const [moneyEntry, setMoneyEntry] = useState(true)
   const [category, setCategory] = useState()
@@ -36,7 +37,7 @@ export const App = () =>{
         setExpenses((prevCount) => prevCount + atual.amount)
       }
     })    
-    }, [loading, refresh])
+    }, [loading, refresh,])
   useEffect(()=>{
     const hello = () =>{
       setTotal(revenue - expenses)}
@@ -73,6 +74,7 @@ export const App = () =>{
     setRegister((prevState) => prevState.filter((register) => register.id !== id))
     setRefresh(false)
   }
+  const switchVisibility = () => {setClose(!close)}
   if(loading){
     return (
       <div className='container'>
@@ -94,7 +96,6 @@ export const App = () =>{
         <h1 className="title">Finance Control</h1>
         <h2 className='credits'>by <a href="">Salah Developer</a></h2>
       </header>
-
         <div className="balance">
           <div className="total">
             <p className='total-title'>total:</p>
@@ -109,8 +110,13 @@ export const App = () =>{
             <p className="expenses-value">$ {expenses}</p>
           </div>
         </div>
+  
+        <button onClick={switchVisibility}
+        className={`new-register ${close == false && 'invisible'} `}>new register</button>
 
-        <div className="add-menu">
+        <div className={`add-menu ${close && 'invisible'} `}>
+            <BiArrowToTop onClick={switchVisibility}
+            className='close-button'/>
           <form onSubmit={submit}>
             <legend className='add-menu-legend'>add register</legend>
             <div className='name'>

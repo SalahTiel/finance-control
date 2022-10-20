@@ -8,6 +8,7 @@ pnpm-debug.log*
 lerna-debug.log*
 
 data
+uptade-guide.txt
 node_modules
 dist
 dist-ssr
